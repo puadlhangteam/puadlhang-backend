@@ -1,4 +1,4 @@
-import userSrevice, { IUserService } from '../../services/User'
+import userSrevice, { IUserService } from '../../services/UserService'
 import { IUserController } from './type'
 
 class UserController implements IUserController {
