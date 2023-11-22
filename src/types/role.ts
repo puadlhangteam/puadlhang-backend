@@ -1,8 +1,6 @@
 import { UID } from '.'
+import { ISpecialistFormDTO } from './dto'
 
-export type ISpecialistForm = {
-  certificate: string
-  description: string
-}
+export type ISpecialistForm = ISpecialistFormDTO & UID
 
-export type ISpecialistApplication = ISpecialistForm & UID
+export type ISpecialistApplication = ISpecialistForm & { formId: string }

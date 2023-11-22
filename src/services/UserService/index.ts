@@ -11,12 +11,13 @@ class UserSrevice implements IUserService {
       await this.userRepository.createUser(uid, defaultUser(credential))
       user = await this.userRepository.getUser(uid)
     }
-    const { email, username, picture } = user!
-    return { uid, username, email, picture }
+    const { uid: u, isAdmin, ...rest } = user!
+    return { uid, ...rest }
   }
   updateUserData: IUserService['updateUserData'] = async (credential, updateUserData) => {
     const { uid } = credential
     const { username, age, gender, picture } = updateUserData
+
     const user = await this.userRepository.getUser(uid)
     if (!user) throw new Error('not found')
     if (user.uid !== uid) throw new Error('Forbidden')
