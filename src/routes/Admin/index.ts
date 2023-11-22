@@ -4,8 +4,9 @@ import authMiddleware from '../../middlewares/Auth'
 
 const adminRouter = Router()
 
-adminRouter.use(authMiddleware.protected)
+adminRouter.use(authMiddleware.adminProtected)
 
-adminRouter.post('/role/specialist', adminController.grantSpecialistRole)
+adminRouter.get('/role/specialist', adminController.getRoleSpecialistApplication)
+adminRouter.post('/role/specialist', adminController.approveRoleSpecialist)
 
 export default adminRouter

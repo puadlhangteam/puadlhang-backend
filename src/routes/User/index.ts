@@ -11,5 +11,6 @@ userRouter.use(authMiddleware.protected)
 // Path
 userRouter.get('/me', userController.getMyData)
 userRouter.patch('/', userController.updateMyData)
+userRouter.post('/role/specialist', userController.applyRoleSpecialist)
 
 export default userRouter
