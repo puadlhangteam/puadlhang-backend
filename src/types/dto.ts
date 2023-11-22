@@ -1,4 +1,5 @@
 import { UID } from '.'
+import { ISolutionModel } from './solution'
 import { IUser, IUserData } from './user'
 
 export type ISpecialistFormDTO = {
@@ -16,3 +17,5 @@ export type IGrantRoleDTO = UID
 
 export type IUpdateUserDTO = IUserData
 export type IMessageDTO = { message: string }
+
+export type ISolutionDTO = ISolutionModel

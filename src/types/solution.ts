@@ -1,4 +1,14 @@
-export type ISolutionModel = {
+export type ISolutionModel = ISolutionData & {
+  comments: {
+    OwnerUid: string
+    text: string
+    rating: number
+    createdAt: Date
+  }[]
+}
+
+export type ISolutionData = {
+  solutionId: string
   name: string
   type: string
   muscle: string
@@ -7,10 +17,4 @@ export type ISolutionModel = {
   solutions: string[]
   pictures: string[]
   videoUrl?: string
-  comments: {
-    OwnerUid: string
-    text: string
-    rating: number
-    createdAt: Date
-  }[]
 }
