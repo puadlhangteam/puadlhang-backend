@@ -6,7 +6,9 @@ import { PORT } from './config/const'
 import { corsOption } from './config/cors'
 import authMiddleware from './middlewares/Auth'
 import errorHandlerMiddleware from './middlewares/ErrorHandler'
+import redirectMiddleware from './middlewares/Redirect'
 import adminRouter from './routes/Admin'
+import solutionRouter from './routes/Solution'
 import userRouter from './routes/User'
 
 const app = express()
@@ -19,8 +21,10 @@ app.use(authMiddleware.decode)
 // Routes
 app.use('/user', userRouter)
 app.use('/admin', adminRouter)
+app.use('/solutions', solutionRouter)
 
 // Error Middleware
+app.use('*', redirectMiddleware.defaultResponse)
 app.use(errorHandlerMiddleware.httpErrorHandler)
 
 app.listen(PORT, () => console.log(`Server listening at port ${PORT}`))

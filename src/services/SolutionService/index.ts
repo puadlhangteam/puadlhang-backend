@@ -35,5 +35,5 @@ class SolutionService implements ISolutionService {
 }
 
 const solutionService = new SolutionService(solutionRepository, userRepository)
-export default solutionRepository
+export default solutionService
 export * from './type'
