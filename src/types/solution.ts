@@ -1,14 +1,15 @@
+export type IComment = {
+  OwnerUid: string
+  text: string
+  rating: number
+  createdAt: Date
+}
 export type ISolutionModel = ISolutionData & {
-  comments: {
-    OwnerUid: string
-    text: string
-    rating: number
-    createdAt: Date
-  }[]
+  solutionId: string
+  comments: IComment[]
 }
 
 export type ISolutionData = {
-  solutionId: string
   name: string
   type: string
   muscle: string

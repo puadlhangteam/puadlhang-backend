@@ -1,6 +1,5 @@
-import { UID } from '.'
-import { ISolutionModel } from './solution'
-import { IUser, IUserData } from './user'
+import { ISolutionData } from './solution'
+import { IUserData } from './user'
 
 export type ISpecialistFormDTO = {
   certificate: string
@@ -10,12 +9,18 @@ export type ISpecialistFormDTO = {
 export type ISpecialistApproveDTO = {
   formId: string
 }
-export type IUserResDTO = IUser
-export type IUserReqDTO = IUser
-
-export type IGrantRoleDTO = UID
+export type IUserDTO = IUserData
 
 export type IUpdateUserDTO = IUserData
 export type IMessageDTO = { message: string }
 
-export type ISolutionDTO = ISolutionModel
+export type ISolutionDTO = ISolutionData & {
+  solutionId: string
+  comments: {
+    OwnerUid: IUserData
+    text: string
+    rating: number
+    createdAt: Date
+  }[]
+}
+export type ICreateSolutionDTO = ISolutionData
