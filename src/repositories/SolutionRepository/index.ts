@@ -1,6 +1,6 @@
 import { CollectionReference } from 'firebase-admin/firestore'
 import { db } from '../../config/service-accounts'
-import { ISolutionDTO } from '../../types/dto'
+import { ISolutionModel } from '../../types/solution'
 import { ISolutionRepository } from './type'
 
 class SolutionRepository implements ISolutionRepository {
@@ -8,7 +8,7 @@ class SolutionRepository implements ISolutionRepository {
 
   getAll: ISolutionRepository['getAll'] = async () => {
     const solutions = await this.Solution.get()
-    return solutions.docs.map((v) => v.data() as ISolutionDTO)
+    return solutions.docs.map((v) => v.data() as ISolutionModel)
   }
   create: ISolutionRepository['create'] = async (solutionData) => {
     const newdoc = await this.Solution.add(solutionData)
