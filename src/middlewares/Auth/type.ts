@@ -1,5 +1,5 @@
+import { IResLocals } from '@src/types'
 import { RequestHandler } from 'express'
-import { IResLocals } from '../../types'
 
 export type IAuthMiddleware = {
   decode: RequestHandler

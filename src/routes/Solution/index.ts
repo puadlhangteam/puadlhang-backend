@@ -1,6 +1,6 @@
+import solutionController from '@src/controllers/SolutionController'
+import authMiddleware from '@src/middlewares/Auth'
 import { Router } from 'express'
-import solutionController from '../../controllers/SolutionController'
-import authMiddleware from '../../middlewares/Auth'
 
 // user router
 const solutionRouter = Router()

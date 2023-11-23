@@ -1,4 +1,4 @@
-import solutionService, { ISolutionService } from '../../services/SolutionService'
+import solutionService, { ISolutionService } from '@src/services/SolutionService'
 import { ISolutionController } from './type'
 
 class SolutionController implements ISolutionController {

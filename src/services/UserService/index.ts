@@ -1,5 +1,5 @@
-import userRepository, { IUserRepository } from '../../repositories/UserRepository'
-import { defaultUser } from '../../utils/user'
+import userRepository, { IUserRepository } from '@src/repositories/UserRepository'
+import { defaultUser } from '@src/utils/user'
 import { IUserService } from './type'
 
 class UserSrevice implements IUserService {

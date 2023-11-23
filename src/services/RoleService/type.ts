@@ -1,6 +1,6 @@
-import { ISpecialistFormDTO } from '../../types/dto'
-import { ISpecialistApplication } from '../../types/role'
-import { IUserCredential } from '../../types/user'
+import { ISpecialistFormDTO } from '@src/types/dto'
+import { ISpecialistApplication } from '@src/types/role'
+import { IUserCredential } from '@src/types/user'
 
 export type IRoleSpecialistService = {
   apply: (credential: IUserCredential, formData: ISpecialistFormDTO) => Promise<void>

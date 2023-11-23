@@ -1,5 +1,5 @@
+import { IMessageDTO } from '@src/types/dto'
 import { ErrorRequestHandler, Response } from 'express'
-import { IMessageDTO } from '../../types/dto'
 
 class ErrorHandlerMiddleware {
   httpErrorHandler: ErrorRequestHandler = (err: Error, req, res: Response<IMessageDTO>, next) => {

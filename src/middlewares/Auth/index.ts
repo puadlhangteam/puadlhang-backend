@@ -1,6 +1,6 @@
-import { auth } from '../../config/service-accounts'
-import userRepository, { IUserRepository } from '../../repositories/UserRepository'
-import { IUserCredential } from '../../types/user'
+import { auth } from '@src/config/service-accounts'
+import userRepository, { IUserRepository } from '@src/repositories/UserRepository'
+import { IUserCredential } from '@src/types/user'
 import { IAuthMiddleware } from './type'
 
 class AuthMiddleware implements IAuthMiddleware {

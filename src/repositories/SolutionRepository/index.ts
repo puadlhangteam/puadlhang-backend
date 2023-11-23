@@ -1,6 +1,6 @@
+import { db } from '@src/config/service-accounts'
+import { ISolutionModel } from '@src/types/solution'
 import { CollectionReference } from 'firebase-admin/firestore'
-import { db } from '../../config/service-accounts'
-import { ISolutionModel } from '../../types/solution'
 import { ISolutionRepository } from './type'
 
 class SolutionRepository implements ISolutionRepository {
