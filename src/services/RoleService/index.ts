@@ -1,5 +1,6 @@
 import roleSpecialistRepository, { IRoleSpecialistRepository } from '@src/repositories/RoleRepository'
 import userRepository, { IUserRepository } from '@src/repositories/UserRepository'
+import { Forbidden403Error, NotFound404Error } from '@src/utils/CustomError'
 import { IRoleSpecialistService } from './type'
 
 class RoleSpecialistService implements IRoleSpecialistService {
@@ -9,7 +10,7 @@ class RoleSpecialistService implements IRoleSpecialistService {
   }
   approved: IRoleSpecialistService['approved'] = async (formId) => {
     const formData = await this.roleSpecialistRepository.getOne(formId)
-    if (!formData) throw new Error('Invalid form')
+    if (!formData) throw new NotFound404Error('Specialist Application Not Found')
     await Promise.all([
       this.roleSpecialistRepository.approved(formId),
       this.userRepository.grantSpecialistRole(formData.uid, formData.formId),
@@ -31,7 +32,7 @@ class RoleSpecialistService implements IRoleSpecialistService {
   checkSpecialistStatus: IRoleSpecialistService['checkSpecialistStatus'] = async (credential, formId) => {
     const { uid } = credential
     const form = await this.roleSpecialistRepository.getOne(formId)
-    if (!form || uid !== form.uid) throw new Error('invalid')
+    if (!form || uid !== form.uid) throw new Forbidden403Error()
     return form
   }
 }

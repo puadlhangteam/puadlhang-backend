@@ -1,5 +1,6 @@
 import roleSpecialistService, { IRoleSpecialistService } from '@src/services/RoleService'
 import userSrevice, { IUserService } from '@src/services/UserService'
+import { UnAuthorized401Error } from '@src/utils/CustomError'
 import { IUserController } from './type'
 
 class UserController implements IUserController {
@@ -18,7 +19,7 @@ class UserController implements IUserController {
   }
   applyRoleSpecialist: IUserController['applyRoleSpecialist'] = async (req, res) => {
     const { credential } = res.locals
-    if (!credential) throw new Error('unauthenticated')
+    if (!credential) throw new UnAuthorized401Error()
 
     await this.roleSpecialistService.apply(credential, req.body)
     res.status(201).json({ message: 'form applied' })
