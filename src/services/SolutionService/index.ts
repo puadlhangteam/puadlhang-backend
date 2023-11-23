@@ -2,7 +2,7 @@ import { AllowLevel } from '@src/config'
 import solutionRepository, { ISolutionRepository } from '@src/repositories/SolutionRepository'
 import userRepository, { IUserRepository } from '@src/repositories/UserRepository'
 import { IComment, ISolutionModel } from '@src/types/solution'
-import { BadRequest400Error } from '@src/utils/CustomError'
+import { BadRequest400Error, NotFound404Error } from '@src/utils/CustomError'
 import { ISolutionService } from './type'
 
 class SolutionService implements ISolutionService {
@@ -24,6 +24,12 @@ class SolutionService implements ISolutionService {
     const result = await Promise.all(solutions.map(this.joinSolution))
 
     return result
+  }
+
+  getOne: ISolutionService['getOne'] = async (solutionId) => {
+    const solution = await this.solutionRepository.getOne(solutionId)
+    if (!solution) throw new NotFound404Error('solution not found')
+    return await this.joinSolution(solution)
   }
 
   create: ISolutionService['create'] = async (solutionData) => {

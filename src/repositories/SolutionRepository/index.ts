@@ -11,7 +11,7 @@ class SolutionRepository implements ISolutionRepository {
   }
   getOne: ISolutionRepository['getOne'] = async (solutionId) => {
     const solution = await this.Solution.doc(solutionId).get()
-    return solution.data() as ISolutionModel
+    return solution.data() as ISolutionModel | undefined
   }
   create: ISolutionRepository['create'] = async (solutionData) => {
     const newdoc = await this.Solution.add(solutionData)
