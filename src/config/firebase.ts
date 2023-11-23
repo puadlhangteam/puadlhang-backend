@@ -10,3 +10,5 @@ const adminApp = initializeApp({
 export const db = getFirestore(adminApp)
 db.settings({ ignoreUndefinedProperties: true })
 export const auth = getAuth(adminApp)
+export { DecodedIdToken } from 'firebase-admin/auth'
+export { CollectionReference, DocumentReference, DocumentSnapshot } from 'firebase-admin/firestore'

@@ -1,4 +1,4 @@
-import { auth } from '@src/config/service-accounts'
+import { auth } from '@src/config/firebase'
 import userRepository, { IUserRepository } from '@src/repositories/UserRepository'
 import { IUserCredential } from '@src/types/user'
 import { IAuthMiddleware } from './type'
