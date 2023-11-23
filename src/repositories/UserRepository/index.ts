@@ -19,7 +19,7 @@ class UserRepository implements IUserRepository {
     Promise.all([this.redisClient.del(`user_${uid}`), this.User.doc(uid).update({ isSpecialist: formId })])
   }
   createUser: IUserRepository['createUser'] = async (uid, data) => {
-    Promise.all([this.redisClient.del(`user_${uid}`), this.User.doc(uid).set(data)])
+    this.User.doc(uid).set(data)
   }
   updateUser: IUserRepository['updateUser'] = async (uid, data) => {
     const { uid: newUid, ...rest } = data
