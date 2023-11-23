@@ -2,7 +2,7 @@ import { RequestHandler } from 'express'
 
 class RedirectMiddleware {
   defaultResponse: RequestHandler = (req, res) => {
-    res.status(404).send('path not found')
+    return res.status(404).send('path not found').end()
   }
 }
 
