@@ -1,3 +1,5 @@
+export type ISolutionIdParam = { solutionId: string }
+
 export type IComment = {
   OwnerUid: string
   text: string

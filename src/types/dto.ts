@@ -8,7 +8,10 @@ export type IReqSpecialistApprovedDTO = {
   formId: string
 }
 
-export type ISpecialistApplication = {}
+export type ISpecialistApplicationDTO = IReqSpecialistFormDTO & {
+  uid: string
+  formId: string
+}
 
 // user data
 export type IUserDTO = {
