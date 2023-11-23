@@ -7,9 +7,11 @@ class SolutionService implements ISolutionService {
   constructor(private solutionRepository: ISolutionRepository, private userRepository: IUserRepository) {}
 
   private joinSolution = async ({ comments, ...rest }: ISolutionModel) => {
-    const newcomment = await Promise.all(comments.map(this.joinUserData))
+    const newcomment = comments && (await Promise.all(comments.map(this.joinUserData)))
+    newcomment.sort((a, b) => b.createdAt.valueOf() - a.createdAt.valueOf())
     return { ...rest, comments: newcomment }
   }
+
   private joinUserData = async ({ OwnerUid, ...rest }: IComment) => {
     const OwnerData = await this.userRepository.getUser(OwnerUid)
     return { ...rest, OwnerUid: OwnerData! }
