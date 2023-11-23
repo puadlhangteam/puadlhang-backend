@@ -1,16 +1,21 @@
 import roleSpecialistRepository, { IRoleSpecialistRepository } from '@src/repositories/RoleRepository'
 import userRepository, { IUserRepository } from '@src/repositories/UserRepository'
-import { Forbidden403Error, NotFound404Error } from '@src/utils/CustomError'
+import { BadRequest400Error, Forbidden403Error, NotFound404Error } from '@src/utils/CustomError'
 import { IRoleSpecialistService } from './type'
 
 class RoleSpecialistService implements IRoleSpecialistService {
   constructor(private roleSpecialistRepository: IRoleSpecialistRepository, private userRepository: IUserRepository) {}
+
   getAll: IRoleSpecialistService['getAll'] = () => {
     return this.roleSpecialistRepository.getAll()
   }
+
   approved: IRoleSpecialistService['approved'] = async (formId) => {
+    if (!formId) throw new BadRequest400Error('formId required')
+
     const formData = await this.roleSpecialistRepository.getOne(formId)
     if (!formData) throw new NotFound404Error('Specialist Application Not Found')
+
     await Promise.all([
       this.roleSpecialistRepository.approved(formId),
       this.userRepository.grantSpecialistRole(formData.uid, formData.formId),
@@ -31,6 +36,7 @@ class RoleSpecialistService implements IRoleSpecialistService {
 
   checkSpecialistStatus: IRoleSpecialistService['checkSpecialistStatus'] = async (credential, formId) => {
     const { uid } = credential
+
     const form = await this.roleSpecialistRepository.getOne(formId)
     if (!form || uid !== form.uid) throw new Forbidden403Error()
     return form

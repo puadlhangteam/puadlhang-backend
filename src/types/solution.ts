@@ -1,3 +1,5 @@
+import { TAllowLevel } from '@src/config'
+
 export type ISolutionIdParam = { solutionId: string }
 
 export type IComment = {
@@ -16,7 +18,7 @@ export type ISolutionData = {
   type: string
   muscle: string
   items?: string[]
-  level: string
+  level: TAllowLevel
   solutions: string[]
   pictures: string[]
   videoUrl?: string

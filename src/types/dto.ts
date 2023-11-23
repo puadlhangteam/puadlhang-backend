@@ -1,3 +1,5 @@
+import { TAllowLevel } from '@src/config'
+
 // user request a specialist status
 export type IReqSpecialistFormDTO = {
   certificate: string
@@ -36,7 +38,7 @@ export type ICreateSolutionDTO = {
   type: string
   muscle: string
   items?: string[]
-  level: string
+  level: TAllowLevel
   solutions: string[]
   pictures: string[]
   videoUrl?: string
