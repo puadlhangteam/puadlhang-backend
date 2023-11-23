@@ -10,6 +10,12 @@ class SolutionController implements ISolutionController {
 
     return res.status(200).json(result).end()
   }
+  getOne: ISolutionController['getOne'] = async (req, res) => {
+    const { solutionId } = req.params
+    const result = await this.solutionService.getOne(solutionId)
+
+    return res.status(200).json(result).end()
+  }
 
   create: ISolutionController['create'] = async (req, res) => {
     const { credential } = res.locals
