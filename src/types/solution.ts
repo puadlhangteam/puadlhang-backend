@@ -8,10 +8,6 @@ export type IComment = {
   rating: number
   createdAt: Date
 }
-export type ISolutionModel = ISolutionData & {
-  solutionId: string
-  comments: IComment[]
-}
 
 export type ISolutionData = {
   name: string
@@ -22,4 +18,10 @@ export type ISolutionData = {
   solutions: string[]
   pictures: string[]
   videoUrl?: string
+}
+
+export type ICreateSolution = ISolutionData & { comments: IComment[] }
+
+export type ISolutionModel = ICreateSolution & {
+  solutionId: string
 }

@@ -44,6 +44,12 @@ export type ICreateSolutionDTO = {
   videoUrl?: string
 }
 
+// post comment
+export type IReqComment = {
+  text: string
+  rating: number
+}
+
 // solution data
 export type IResSolutionDTO = ICreateSolutionDTO & {
   solutionId: string

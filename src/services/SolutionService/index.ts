@@ -49,7 +49,7 @@ class SolutionService implements ISolutionService {
 
     if (items && !Array.isArray(items)) throw new BadRequest400Error('Invalid items')
 
-    this.solutionRepository.create({ level, muscle, name, pictures, solutions, type, items, videoUrl })
+    this.solutionRepository.create({ level, muscle, name, pictures, solutions, type, items, videoUrl, comments: [] })
   }
 
   update: ISolutionService['update'] = async (solutionId, solutionData) => {
