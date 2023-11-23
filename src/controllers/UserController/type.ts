@@ -1,9 +1,9 @@
+import { INoParam, IResLocals } from '@src/types'
+import { IMessageDTO, IReqSpecialistFormDTO, IReqUpdateUserDTO } from '@src/types/dto'
 import { RequestHandler } from 'express'
-import { IResLocals } from '../../types'
-import { IMessageDTO, ISpecialistFormDTO, IUpdateUserDTO } from '../../types/dto'
 
 export type IUserController = {
-  getMyData: RequestHandler<unknown, unknown, unknown, unknown, IResLocals>
-  updateMyData: RequestHandler<unknown, IMessageDTO, IUpdateUserDTO, unknown, IResLocals>
-  applyRoleSpecialist: RequestHandler<unknown, IMessageDTO, ISpecialistFormDTO, unknown, IResLocals>
+  getMyData: RequestHandler<INoParam, unknown, unknown, unknown, IResLocals>
+  updateMyData: RequestHandler<INoParam, IMessageDTO, IReqUpdateUserDTO, unknown, IResLocals>
+  applyRoleSpecialist: RequestHandler<INoParam, IMessageDTO, IReqSpecialistFormDTO, unknown, IResLocals>
 }

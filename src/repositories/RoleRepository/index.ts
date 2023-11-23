@@ -1,6 +1,5 @@
-import { CollectionReference } from 'firebase-admin/firestore'
-import { db } from '../../config/service-accounts'
-import { ISpecialistApplication } from '../../types/role'
+import { CollectionReference, db } from '@src/config/firebase'
+import { ISpecialistApplication } from '@src/types/role'
 import { IRoleSpecialistRepository } from './type'
 
 class RoleSpecialistRepository implements IRoleSpecialistRepository {
