@@ -1,6 +1,6 @@
+import { IResLocals } from '@src/types'
+import { ISpecialistApproveDTO } from '@src/types/dto'
 import { RequestHandler } from 'express'
-import { IResLocals } from '../../types'
-import { ISpecialistApproveDTO } from '../../types/dto'
 
 export type IAdminController = {
   approveRoleSpecialist: RequestHandler<unknown, unknown, ISpecialistApproveDTO, unknown, IResLocals>

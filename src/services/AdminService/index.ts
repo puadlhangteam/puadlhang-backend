@@ -1,4 +1,4 @@
-import userRepository, { IUserRepository } from '../../repositories/UserRepository'
+import userRepository, { IUserRepository } from '@src/repositories/UserRepository'
 import { IAdminService } from './type'
 
 class AdminService implements IAdminService {

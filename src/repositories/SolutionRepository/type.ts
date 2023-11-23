@@ -1,4 +1,4 @@
-import { ISolutionData, ISolutionModel } from '../../types/solution'
+import { ISolutionData, ISolutionModel } from '@src/types/solution'
 
 export type ISolutionRepository = {
   getAll: () => Promise<ISolutionModel[]>

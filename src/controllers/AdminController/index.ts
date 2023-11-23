@@ -1,4 +1,4 @@
-import roleSpecialistService, { IRoleSpecialistService } from '../../services/RoleService'
+import roleSpecialistService, { IRoleSpecialistService } from '@src/services/RoleService'
 import { IAdminController } from './type'
 
 class AdminController implements IAdminController {

@@ -1,5 +1,5 @@
-import roleSpecialistService, { IRoleSpecialistService } from '../../services/RoleService'
-import userSrevice, { IUserService } from '../../services/UserService'
+import roleSpecialistService, { IRoleSpecialistService } from '@src/services/RoleService'
+import userSrevice, { IUserService } from '@src/services/UserService'
 import { IUserController } from './type'
 
 class UserController implements IUserController {

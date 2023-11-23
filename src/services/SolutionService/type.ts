@@ -1,5 +1,5 @@
-import { ISolutionDTO } from '../../types/dto'
-import { ISolutionData } from '../../types/solution'
+import { ISolutionDTO } from '@src/types/dto'
+import { ISolutionData } from '@src/types/solution'
 
 export type ISolutionService = {
   getAll: () => Promise<ISolutionDTO[]>

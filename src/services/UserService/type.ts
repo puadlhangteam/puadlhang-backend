@@ -1,5 +1,5 @@
-import { IUpdateUserDTO, IUserDTO } from '../../types/dto'
-import { IUserCredential } from '../../types/user'
+import { IUpdateUserDTO, IUserDTO } from '@src/types/dto'
+import { IUserCredential } from '@src/types/user'
 
 export type IUserService = {
   getUserData: (credential: IUserCredential) => Promise<IUserDTO>

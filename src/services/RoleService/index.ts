@@ -1,5 +1,5 @@
-import roleSpecialistRepository, { IRoleSpecialistRepository } from '../../repositories/RoleRepository'
-import userRepository, { IUserRepository } from '../../repositories/UserRepository'
+import roleSpecialistRepository, { IRoleSpecialistRepository } from '@src/repositories/RoleRepository'
+import userRepository, { IUserRepository } from '@src/repositories/UserRepository'
 import { IRoleSpecialistService } from './type'
 
 class RoleSpecialistService implements IRoleSpecialistService {

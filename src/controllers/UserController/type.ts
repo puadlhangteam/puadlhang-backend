@@ -1,6 +1,6 @@
+import { IResLocals } from '@src/types'
+import { IMessageDTO, ISpecialistFormDTO, IUpdateUserDTO } from '@src/types/dto'
 import { RequestHandler } from 'express'
-import { IResLocals } from '../../types'
-import { IMessageDTO, ISpecialistFormDTO, IUpdateUserDTO } from '../../types/dto'
 
 export type IUserController = {
   getMyData: RequestHandler<unknown, unknown, unknown, unknown, IResLocals>

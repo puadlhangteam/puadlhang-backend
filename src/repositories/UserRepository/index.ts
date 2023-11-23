@@ -1,6 +1,6 @@
+import { db } from '@src/config/service-accounts'
+import { IUser } from '@src/types/user'
 import { CollectionReference } from 'firebase-admin/firestore'
-import { db } from '../../config/service-accounts'
-import { IUser } from '../../types/user'
 import { IUserRepository } from './type'
 
 class UserRepository implements IUserRepository {

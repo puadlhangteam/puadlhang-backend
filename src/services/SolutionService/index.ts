@@ -1,6 +1,6 @@
-import solutionRepository, { ISolutionRepository } from '../../repositories/SolutionRepository'
-import userRepository, { IUserRepository } from '../../repositories/UserRepository'
-import { IComment, ISolutionModel } from '../../types/solution'
+import solutionRepository, { ISolutionRepository } from '@src/repositories/SolutionRepository'
+import userRepository, { IUserRepository } from '@src/repositories/UserRepository'
+import { IComment, ISolutionModel } from '@src/types/solution'
 import { ISolutionService } from './type'
 
 class SolutionService implements ISolutionService {

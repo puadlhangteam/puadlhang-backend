@@ -1,6 +1,6 @@
+import { IResLocals } from '@src/types'
+import { ICreateSolutionDTO, ISolutionDTO } from '@src/types/dto'
 import { RequestHandler } from 'express'
-import { IResLocals } from '../../types'
-import { ICreateSolutionDTO, ISolutionDTO } from '../../types/dto'
 
 export type ISolutionController = {
   getAll: RequestHandler<unknown, ISolutionDTO[]>
