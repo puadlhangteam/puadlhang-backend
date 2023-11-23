@@ -9,6 +9,10 @@ class SolutionRepository implements ISolutionRepository {
     const solutions = await this.Solution.get()
     return solutions.docs.map((v) => v.data() as ISolutionModel)
   }
+  getOne: ISolutionRepository['getOne'] = async (solutionId) => {
+    const solution = await this.Solution.doc(solutionId).get()
+    return solution.data() as ISolutionModel
+  }
   create: ISolutionRepository['create'] = async (solutionData) => {
     const newdoc = await this.Solution.add(solutionData)
     await newdoc.update({ formId: newdoc.id })
