@@ -6,7 +6,7 @@ export type IComment = {
   OwnerUid: string
   text: string
   rating: number
-  createdAt: Date
+  createdAt: number
 }
 
 export type ISolutionData = {

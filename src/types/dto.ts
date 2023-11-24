@@ -57,7 +57,7 @@ export type IResSolutionsDTO = ICreateSolutionDTO & {
     OwnerUid: string
     text: string
     rating: number
-    createdAt: Date
+    createdAt: number
   }[]
 }
 
@@ -67,6 +67,6 @@ export type IResSolutionDTO = ICreateSolutionDTO & {
     OwnerUid: IUserDTO
     text: string
     rating: number
-    createdAt: Date
+    createdAt: number
   }[]
 }

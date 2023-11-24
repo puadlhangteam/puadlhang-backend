@@ -39,7 +39,7 @@ class SolutionService implements ISolutionService {
 
     if (!text && text !== '') throw new BadRequest400Error('Invalid comment text')
 
-    await this.solutionRepository.comment(solutionId, { OwnerUid: uid, rating, text, createdAt: new Date() })
+    await this.solutionRepository.comment(solutionId, { OwnerUid: uid, rating, text, createdAt: new Date().valueOf() })
   }
 
   create: ISolutionService['create'] = async (solutionData) => {

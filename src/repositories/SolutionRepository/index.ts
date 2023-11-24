@@ -16,12 +16,12 @@ class SolutionRepository implements ISolutionRepository {
   }
 
   comment: ISolutionRepository['comment'] = async (solutionId, commentData) => {
-    await this.Solution.doc(solutionId).update({ comment: FieldValue.arrayUnion(commentData) })
+    await this.Solution.doc(solutionId).update({ comments: FieldValue.arrayUnion(commentData) })
   }
 
   create: ISolutionRepository['create'] = async (solutionData) => {
     const newdoc = await this.Solution.add(solutionData)
-    await newdoc.update({ formId: newdoc.id })
+    await newdoc.update({ solutionId: newdoc.id })
   }
 
   update: ISolutionRepository['update'] = async (solutionId, solutionData) => {
