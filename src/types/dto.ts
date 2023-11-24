@@ -1,5 +1,5 @@
 import { TAllowLevel } from '../config'
-
+export type ID = string
 // user request a specialist status
 export type IReqSpecialistFormDTO = {
   certificate: string
@@ -7,18 +7,18 @@ export type IReqSpecialistFormDTO = {
 }
 // admin approve user specialist form
 export type IReqSpecialistApprovedDTO = {
-  formId: string
+  formId: ID
 }
 
 export type ISpecialistApplicationDTO = IReqSpecialistFormDTO & {
-  uid: string
-  formId: string
+  uid: ID
+  formId: ID
 }
 
 // user data
 export type IUserDTO = {
   username: string
-  uid: string
+  uid: ID
   email: string
   picture?: string
   gender?: 'male' | 'female'
@@ -52,11 +52,11 @@ export type IReqComment = {
 
 // solution data
 export type IResSolutionsDTO = ICreateSolutionDTO & {
-  solutionId: string
+  solutionId: ID
 }
 
 export type IResSolutionDTO = ICreateSolutionDTO & {
-  solutionId: string
+  solutionId: ID
   comments: {
     OwnerUid: IUserDTO
     text: string

@@ -17,7 +17,8 @@ class SolutionService implements ISolutionService {
 
   private joinUserData = async ({ OwnerUid, ...rest }: IComment) => {
     const OwnerData = await this.userRepository.getUser(OwnerUid)
-    return { ...rest, OwnerUid: OwnerData! }
+    const { isAdmin, ...restData } = OwnerData!
+    return { ...rest, OwnerUid: restData }
   }
 
   getAll: ISolutionService['getAll'] = async () => {
