@@ -1,6 +1,6 @@
-import { IReqComment, IResSolutionDTO, IResSolutionsDTO } from '@src/types/dto'
-import { ISolutionData } from '@src/types/solution'
-import { IUserCredential } from '@src/types/user'
+import { IReqComment, IResSolutionDTO, IResSolutionsDTO } from '../../types/dto'
+import { ISolutionData } from '../../types/solution'
+import { IUserCredential } from '../../types/user'
 
 export type ISolutionService = {
   getAll: () => Promise<IResSolutionsDTO[]>

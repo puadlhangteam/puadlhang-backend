@@ -1,7 +1,7 @@
-import roleSpecialistRepository, { IRoleSpecialistRepository } from '@src/repositories/RoleRepository'
-import userRepository, { IUserRepository } from '@src/repositories/UserRepository'
-import { BadRequest400Error, Forbidden403Error, NotFound404Error } from '@src/utils/CustomError'
-import { isString } from '@src/utils/validate'
+import roleSpecialistRepository, { IRoleSpecialistRepository } from '../../repositories/RoleRepository'
+import userRepository, { IUserRepository } from '../../repositories/UserRepository'
+import { BadRequest400Error, Forbidden403Error, NotFound404Error } from '../../utils/CustomError'
+import { isString } from '../../utils/validate'
 import { IRoleSpecialistService } from './type'
 
 class RoleSpecialistService implements IRoleSpecialistService {

@@ -1,8 +1,8 @@
-import { AllowGender } from '@src/config'
-import userRepository, { IUserRepository } from '@src/repositories/UserRepository'
-import { BadRequest400Error, Forbidden403Error } from '@src/utils/CustomError'
-import { defaultUser } from '@src/utils/user'
-import { isNumber, isString, isValidValue } from '@src/utils/validate'
+import { AllowGender } from '../../config'
+import userRepository, { IUserRepository } from '../../repositories/UserRepository'
+import { BadRequest400Error, Forbidden403Error } from '../../utils/CustomError'
+import { defaultUser } from '../../utils/user'
+import { isNumber, isString, isValidValue } from '../../utils/validate'
 import { IUserService } from './type'
 
 class UserSrevice implements IUserService {

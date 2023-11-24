@@ -1,7 +1,7 @@
-import { AppConfig } from '@src/secrets'
 import { cert, initializeApp } from 'firebase-admin/app'
 import { getAuth } from 'firebase-admin/auth'
 import { getFirestore } from 'firebase-admin/firestore'
+import { AppConfig } from '../secrets'
 
 const adminApp = initializeApp({
   credential: cert(AppConfig as Record<string, string>),

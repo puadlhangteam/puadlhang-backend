@@ -1,5 +1,5 @@
-import roleSpecialistService, { IRoleSpecialistService } from '@src/services/RoleService'
-import { UnAuthorized401Error } from '@src/utils/CustomError'
+import roleSpecialistService, { IRoleSpecialistService } from '../../services/RoleService'
+import { UnAuthorized401Error } from '../../utils/CustomError'
 import { IAdminController } from './type'
 
 class AdminController implements IAdminController {

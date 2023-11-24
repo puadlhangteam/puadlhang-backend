@@ -1,9 +1,9 @@
-import { AllowLevel } from '@src/config'
-import solutionRepository, { ISolutionRepository } from '@src/repositories/SolutionRepository'
-import userRepository, { IUserRepository } from '@src/repositories/UserRepository'
-import { IComment, ISolutionModel } from '@src/types/solution'
-import { BadRequest400Error, NotFound404Error } from '@src/utils/CustomError'
-import { isArray, isNumber, isString, isValidValue } from '@src/utils/validate'
+import { AllowLevel } from '../../config'
+import solutionRepository, { ISolutionRepository } from '../../repositories/SolutionRepository'
+import userRepository, { IUserRepository } from '../../repositories/UserRepository'
+import { IComment, ISolutionModel } from '../../types/solution'
+import { BadRequest400Error, NotFound404Error } from '../../utils/CustomError'
+import { isArray, isNumber, isString, isValidValue } from '../../utils/validate'
 import { ISolutionService } from './type'
 
 class SolutionService implements ISolutionService {

@@ -1,6 +1,6 @@
-import { CollectionReference, db } from '@src/config/firebase'
-import { RedisClientType, redisClient } from '@src/config/redis'
-import { IUser } from '@src/types/user'
+import { CollectionReference, db } from '../../config/firebase'
+import { RedisClientType, redisClient } from '../../config/redis'
+import { IUser } from '../../types/user'
 import { IUserRepository } from './type'
 
 class UserRepository implements IUserRepository {

@@ -1,5 +1,5 @@
-import { CollectionReference, db } from '@src/config/firebase'
-import { ISpecialistApplication } from '@src/types/role'
+import { CollectionReference, db } from '../../config/firebase'
+import { ISpecialistApplication } from '../../types/role'
 import { IRoleSpecialistRepository } from './type'
 
 class RoleSpecialistRepository implements IRoleSpecialistRepository {

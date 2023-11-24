@@ -1,4 +1,4 @@
-import { ISpecialistApplication, ISpecialistForm } from '@src/types/role'
+import { ISpecialistApplication, ISpecialistForm } from '../../types/role'
 
 export type IRoleSpecialistRepository = {
   apply: (formBody: ISpecialistForm) => Promise<void>

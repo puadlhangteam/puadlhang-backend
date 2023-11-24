@@ -1,5 +1,5 @@
-import { CollectionReference, FieldValue, db } from '@src/config/firebase'
-import { ISolutionModel } from '@src/types/solution'
+import { CollectionReference, FieldValue, db } from '../../config/firebase'
+import { ISolutionModel } from '../../types/solution'
 import { ISolutionRepository } from './type'
 
 class SolutionRepository implements ISolutionRepository {

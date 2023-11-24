@@ -1,4 +1,4 @@
-import { TAllowLevel } from '@src/config'
+import { TAllowLevel } from '../config'
 
 // user request a specialist status
 export type IReqSpecialistFormDTO = {
