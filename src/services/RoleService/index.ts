@@ -1,6 +1,7 @@
 import roleSpecialistRepository, { IRoleSpecialistRepository } from '@src/repositories/RoleRepository'
 import userRepository, { IUserRepository } from '@src/repositories/UserRepository'
 import { BadRequest400Error, Forbidden403Error, NotFound404Error } from '@src/utils/CustomError'
+import { isString } from '@src/utils/validate'
 import { IRoleSpecialistService } from './type'
 
 class RoleSpecialistService implements IRoleSpecialistService {
@@ -11,7 +12,7 @@ class RoleSpecialistService implements IRoleSpecialistService {
   }
 
   approved: IRoleSpecialistService['approved'] = async (formId) => {
-    if (!formId) throw new BadRequest400Error('formId required')
+    if (!isString(formId)) throw new BadRequest400Error('formId required')
 
     const formData = await this.roleSpecialistRepository.getOne(formId)
     if (!formData) throw new NotFound404Error('Specialist Application Not Found')
@@ -25,8 +26,9 @@ class RoleSpecialistService implements IRoleSpecialistService {
   apply: IRoleSpecialistService['apply'] = async (credential, formData) => {
     const { uid } = credential
     const { certificate, description } = formData
+    if (!isString(certificate)) throw new BadRequest400Error('Invalid certificate')
+    if (description && isString(description)) throw new BadRequest400Error('Invalid description')
     const existForm = await this.roleSpecialistRepository.getOneByUid(uid)
-
     if (!existForm) {
       this.roleSpecialistRepository.apply({ uid, certificate, description })
     } else {

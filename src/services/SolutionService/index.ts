@@ -3,6 +3,7 @@ import solutionRepository, { ISolutionRepository } from '@src/repositories/Solut
 import userRepository, { IUserRepository } from '@src/repositories/UserRepository'
 import { IComment, ISolutionModel } from '@src/types/solution'
 import { BadRequest400Error, NotFound404Error } from '@src/utils/CustomError'
+import { isArray, isNumber, isString, isValidValue } from '@src/utils/validate'
 import { ISolutionService } from './type'
 
 class SolutionService implements ISolutionService {
@@ -22,7 +23,7 @@ class SolutionService implements ISolutionService {
   getAll: ISolutionService['getAll'] = async () => {
     const solutions = await this.solutionRepository.getAll()
 
-    return solutions
+    return solutions.map(({ comments, ...rest }) => rest)
   }
 
   getOne: ISolutionService['getOne'] = async (solutionId) => {
@@ -35,9 +36,9 @@ class SolutionService implements ISolutionService {
     const { uid } = credential
     const { rating, text } = commentData
 
-    if ((!rating && rating !== 0) || isNaN(rating)) throw new BadRequest400Error('Invalid rating')
+    if (isNumber(rating)) throw new BadRequest400Error('Invalid rating')
 
-    if (!text && text !== '') throw new BadRequest400Error('Invalid comment text')
+    if (isString(text)) throw new BadRequest400Error('Invalid comment text')
 
     await this.solutionRepository.comment(solutionId, { OwnerUid: uid, rating, text, createdAt: new Date().valueOf() })
   }
@@ -45,19 +46,15 @@ class SolutionService implements ISolutionService {
   create: ISolutionService['create'] = async (solutionData) => {
     const { level, muscle, name, pictures, solutions, type, items, videoUrl } = solutionData
 
-    if (!level || (level && !AllowLevel.includes(level)))
-      throw new BadRequest400Error('level is required and must be easy or medium or hard')
-
-    // TODO
-    if (!muscle) throw new BadRequest400Error('muscle is missing')
-
-    if (!name) throw new BadRequest400Error('name is missing')
-
-    if (!pictures || !Array.isArray(pictures)) throw new BadRequest400Error('Invalid pictures')
-
-    if (!solutions || !Array.isArray(solutions)) throw new BadRequest400Error('Invalid solutions')
-
-    if (items && !Array.isArray(items)) throw new BadRequest400Error('Invalid items')
+    if (!isString(level) || !isValidValue(level, AllowLevel))
+      throw new BadRequest400Error('level is required and must be ง่าย or กลาง or ยาก')
+    if (!isString(muscle)) throw new BadRequest400Error('muscle is missing') // TODO
+    if (!isString(name)) throw new BadRequest400Error('Invalid name')
+    if (!isArray(pictures)) throw new BadRequest400Error('Invalid pictures')
+    if (!isArray(solutions)) throw new BadRequest400Error('Invalid solutions')
+    if (!isString(type)) throw new BadRequest400Error('type is missing')
+    if (items && !isArray(items)) throw new BadRequest400Error('Invalid items')
+    if (videoUrl && !isString(videoUrl)) throw new BadRequest400Error('Invalid videoUrl')
 
     this.solutionRepository.create({ level, muscle, name, pictures, solutions, type, items, videoUrl, comments: [] })
   }
@@ -65,12 +62,15 @@ class SolutionService implements ISolutionService {
   update: ISolutionService['update'] = async (solutionId, solutionData) => {
     const { level, muscle, name, pictures, solutions, type, items, videoUrl } = solutionData
 
-    if (level && !AllowLevel.includes(level))
-      throw new BadRequest400Error('level is required and must be in ง่าย กลาง ยาก')
-
-    if (pictures && !Array.isArray(pictures)) throw new BadRequest400Error('Invalid pictures')
-    if (solutions && !Array.isArray(solutions)) throw new BadRequest400Error('Invalid solutions')
-    if (items && !Array.isArray(items)) throw new BadRequest400Error('Invalid items')
+    if (level && (!isString(level) || !isValidValue(level, AllowLevel)))
+      throw new BadRequest400Error('level is required and must be ง่าย or กลาง or ยาก')
+    if (muscle && !isString(muscle)) throw new BadRequest400Error('muscle is missing') // TODO
+    if (name && !isString(name)) throw new BadRequest400Error('Invalid name')
+    if (pictures && !isArray(pictures)) throw new BadRequest400Error('Invalid pictures')
+    if (solutions && !isArray(solutions)) throw new BadRequest400Error('Invalid solutions')
+    if (type && !isString(type)) throw new BadRequest400Error('type is missing')
+    if (items && !isArray(items)) throw new BadRequest400Error('Invalid items')
+    if (videoUrl && !isString(videoUrl)) throw new BadRequest400Error('Invalid videoUrl')
 
     this.solutionRepository.update(solutionId, { level, muscle, name, pictures, solutions, type, items, videoUrl })
   }
