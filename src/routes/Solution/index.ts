@@ -4,17 +4,18 @@ import { Router } from 'express'
 
 // user router
 const solutionRouter = Router()
-const protectedSolutionRouter = Router()
-
 // Middleware
-protectedSolutionRouter.use(authMiddleware.adminProtected)
-solutionRouter.use(protectedSolutionRouter)
+solutionRouter.patch('*', authMiddleware.adminProtected)
+solutionRouter.delete('*', authMiddleware.adminProtected)
 
 // Path
 solutionRouter.get('/', solutionController.getAll)
+solutionRouter.get('/solution/:solutionId', solutionController.getOne)
+solutionRouter.post('/solution/:solutionId/comments', solutionController.comment)
 
-protectedSolutionRouter.post('/', solutionController.create)
-protectedSolutionRouter.patch('/solution/:solutionId', solutionController.update)
-protectedSolutionRouter.delete('/solution/:solutionId', solutionController.delete)
+// admin protected
+solutionRouter.post('/', authMiddleware.adminProtected, solutionController.create)
+solutionRouter.patch('/solution/:solutionId', solutionController.update)
+solutionRouter.delete('/solution/:solutionId', solutionController.delete)
 
 export default solutionRouter

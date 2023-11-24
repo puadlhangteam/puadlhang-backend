@@ -1,12 +1,12 @@
+import { TAllowLevel } from '@src/config'
+
+export type ISolutionIdParam = { solutionId: string }
+
 export type IComment = {
   OwnerUid: string
   text: string
   rating: number
-  createdAt: Date
-}
-export type ISolutionModel = ISolutionData & {
-  solutionId: string
-  comments: IComment[]
+  createdAt: number
 }
 
 export type ISolutionData = {
@@ -14,8 +14,14 @@ export type ISolutionData = {
   type: string
   muscle: string
   items?: string[]
-  level: string
+  level: TAllowLevel
   solutions: string[]
   pictures: string[]
   videoUrl?: string
+}
+
+export type ICreateSolution = ISolutionData & { comments: IComment[] }
+
+export type ISolutionModel = ICreateSolution & {
+  solutionId: string
 }

@@ -1,6 +1,5 @@
-import { db } from '@src/config/service-accounts'
+import { CollectionReference, FieldValue, db } from '@src/config/firebase'
 import { ISolutionModel } from '@src/types/solution'
-import { CollectionReference } from 'firebase-admin/firestore'
 import { ISolutionRepository } from './type'
 
 class SolutionRepository implements ISolutionRepository {
@@ -10,13 +9,25 @@ class SolutionRepository implements ISolutionRepository {
     const solutions = await this.Solution.get()
     return solutions.docs.map((v) => v.data() as ISolutionModel)
   }
+
+  getOne: ISolutionRepository['getOne'] = async (solutionId) => {
+    const solution = await this.Solution.doc(solutionId).get()
+    return solution.data() as ISolutionModel | undefined
+  }
+
+  comment: ISolutionRepository['comment'] = async (solutionId, commentData) => {
+    await this.Solution.doc(solutionId).update({ comments: FieldValue.arrayUnion(commentData) })
+  }
+
   create: ISolutionRepository['create'] = async (solutionData) => {
     const newdoc = await this.Solution.add(solutionData)
-    await newdoc.update({ formId: newdoc.id })
+    await newdoc.update({ solutionId: newdoc.id })
   }
+
   update: ISolutionRepository['update'] = async (solutionId, solutionData) => {
     this.Solution.doc(solutionId).update(solutionData)
   }
+
   delete: ISolutionRepository['delete'] = async (solutionId) => {
     this.Solution.doc(solutionId).delete()
   }
