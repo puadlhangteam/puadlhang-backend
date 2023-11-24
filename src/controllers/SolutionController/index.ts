@@ -26,6 +26,17 @@ class SolutionController implements ISolutionController {
     return res.status(201).json({ message: 'Created' })
   }
 
+  comment: ISolutionController['comment'] = async (req, res) => {
+    const { credential } = res.locals
+    if (!credential) throw new UnAuthorized401Error()
+
+    const { solutionId } = req.params
+
+    await this.solutionService.comment(solutionId, credential, req.body)
+
+    return res.status(201).json({ message: 'comment add' }).end()
+  }
+
   update: ISolutionController['update'] = async (req, res) => {
     const { credential } = res.locals
     if (!credential) throw new UnAuthorized401Error()
@@ -36,6 +47,7 @@ class SolutionController implements ISolutionController {
 
     return res.status(200).json({ message: 'updated' })
   }
+
   delete: ISolutionController['delete'] = async (req, res) => {
     const { credential } = res.locals
     if (!credential) throw new UnAuthorized401Error()
