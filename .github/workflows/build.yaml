@@ -2,8 +2,6 @@ name: Docker Build Image
 on:
   push:
     branches: [main]
-  pull_request:
-    branches: [main]
 jobs:
   build-docker-image:
     runs-on: ubuntu-latest
