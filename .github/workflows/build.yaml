@@ -39,8 +39,8 @@ jobs:
     needs: [build-docker-image]
     uses: CleverseAcademy/cd-compose-deployment/.github/workflows/deploy.yaml@ci/actions
     with:
-      host: ${{ secrets.CD_HOST }}
       image: ${{ needs.build-docker-image.outputs.image }}
       service_name: ${{ vars.CD_SERVICE }}
     secrets:
+      host: ${{ secrets.CD_HOST }}
       private_key: ${{ secrets.CD_CLI_PRIVATE_KEY_PEM }}
