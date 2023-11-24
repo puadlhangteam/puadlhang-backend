@@ -1,4 +1,4 @@
-import { IComment, ICreateSolution, ISolutionData, ISolutionModel } from '@src/types/solution'
+import { IComment, ICreateSolution, ISolutionData, ISolutionModel } from '../../types/solution'
 
 export type ISolutionRepository = {
   getAll: () => Promise<ISolutionModel[]>

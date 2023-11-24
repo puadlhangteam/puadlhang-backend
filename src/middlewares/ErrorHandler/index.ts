@@ -1,6 +1,6 @@
-import { IMessageDTO } from '@src/types/dto'
-import { HttpCodeError } from '@src/utils/CustomError'
 import { ErrorRequestHandler, Response } from 'express'
+import { IMessageDTO } from '../../types/dto'
+import { HttpCodeError } from '../../utils/CustomError'
 
 class ErrorHandlerMiddleware {
   httpErrorHandler: ErrorRequestHandler = (err: Error, req, res: Response<IMessageDTO>, next) => {

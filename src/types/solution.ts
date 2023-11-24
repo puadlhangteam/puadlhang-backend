@@ -1,4 +1,4 @@
-import { TAllowLevel } from '@src/config'
+import { TAllowLevel } from '../config'
 
 export type ISolutionIdParam = { solutionId: string }
 

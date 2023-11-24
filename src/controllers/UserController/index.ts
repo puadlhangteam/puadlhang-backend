@@ -1,6 +1,6 @@
-import roleSpecialistService, { IRoleSpecialistService } from '@src/services/RoleService'
-import userSrevice, { IUserService } from '@src/services/UserService'
-import { UnAuthorized401Error } from '@src/utils/CustomError'
+import roleSpecialistService, { IRoleSpecialistService } from '../../services/RoleService'
+import userSrevice, { IUserService } from '../../services/UserService'
+import { UnAuthorized401Error } from '../../utils/CustomError'
 import { IUserController } from './type'
 
 class UserController implements IUserController {

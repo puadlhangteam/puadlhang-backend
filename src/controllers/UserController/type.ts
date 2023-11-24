@@ -1,6 +1,6 @@
-import { INoParam, IResLocals } from '@src/types'
-import { IMessageDTO, IReqSpecialistFormDTO, IReqUpdateUserDTO } from '@src/types/dto'
 import { RequestHandler } from 'express'
+import { INoParam, IResLocals } from '../../types'
+import { IMessageDTO, IReqSpecialistFormDTO, IReqUpdateUserDTO } from '../../types/dto'
 
 export type IUserController = {
   getMyData: RequestHandler<INoParam, unknown, unknown, unknown, IResLocals>

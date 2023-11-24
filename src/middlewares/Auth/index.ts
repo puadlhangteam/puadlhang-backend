@@ -1,7 +1,7 @@
-import { auth } from '@src/config/firebase'
-import userRepository, { IUserRepository } from '@src/repositories/UserRepository'
-import { IUserCredential } from '@src/types/user'
-import { Forbidden403Error, UnAuthorized401Error } from '@src/utils/CustomError'
+import { auth } from '../../config/firebase'
+import userRepository, { IUserRepository } from '../../repositories/UserRepository'
+import { IUserCredential } from '../../types/user'
+import { Forbidden403Error, UnAuthorized401Error } from '../../utils/CustomError'
 import { IAuthMiddleware } from './type'
 
 class AuthMiddleware implements IAuthMiddleware {

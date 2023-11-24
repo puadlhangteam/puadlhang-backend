@@ -1,7 +1,7 @@
-import { INoParam, IResLocals } from '@src/types'
-import { ICreateSolutionDTO, IMessageDTO, IReqComment, IResSolutionDTO, IResSolutionsDTO } from '@src/types/dto'
-import { ISolutionIdParam } from '@src/types/solution'
 import { RequestHandler } from 'express'
+import { INoParam, IResLocals } from '../../types'
+import { ICreateSolutionDTO, IMessageDTO, IReqComment, IResSolutionDTO, IResSolutionsDTO } from '../../types/dto'
+import { ISolutionIdParam } from '../../types/solution'
 
 export type ISolutionController = {
   getAll: RequestHandler<INoParam, IResSolutionsDTO[]>

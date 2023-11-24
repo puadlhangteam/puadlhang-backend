@@ -1,5 +1,5 @@
-import solutionService, { ISolutionService } from '@src/services/SolutionService'
-import { UnAuthorized401Error } from '@src/utils/CustomError'
+import solutionService, { ISolutionService } from '../../services/SolutionService'
+import { UnAuthorized401Error } from '../../utils/CustomError'
 import { ISolutionController } from './type'
 
 class SolutionController implements ISolutionController {

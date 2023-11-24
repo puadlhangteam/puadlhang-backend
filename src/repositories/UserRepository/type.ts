@@ -1,4 +1,4 @@
-import { IUser, IUserData } from '@src/types/user'
+import { IUser, IUserData } from '../../types/user'
 
 export type IUserRepository = {
   getUser: (uid: string) => Promise<IUser | undefined>

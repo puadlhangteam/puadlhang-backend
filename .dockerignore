@@ -3,3 +3,4 @@ node_modules
 dist*
 temp.ts
 service-account.json
+.git*

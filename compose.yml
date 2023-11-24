@@ -1,0 +1,37 @@
+version: '3.8'
+services:
+  cache:
+    image: redis:7.2.3
+    expose:
+      - 6379
+  api:
+    # build: .
+    image: bunnana/puadlhang-api:0.1.0-beta
+    environment:
+      - PORT=8080
+      - REDIS_URL=redis://cache:6379
+    ports:
+      - 8080:8080
+    depends_on:
+      - cache
+    secrets:
+      - service-account
+  deployment:
+    image: cloudiana/compose-deployment:0.0.5
+    ports:
+      - 3000:3000
+    environment:
+      - CD_HOST_COMPOSE_WORKING_DIR=/home/admin/puadlhang-dev
+    volumes:
+      - ./compose.yml:/bin/compose.yml
+      - /var/run/docker.sock:/var/run/docker.sock
+    secrets:
+      - pubkey
+# volumes:
+#   cleverse-backend-db-volume:
+
+secrets:
+  service-account:
+    file: service-account.json
+  pubkey:
+    file: cd_public.pem
