@@ -5,8 +5,8 @@ services:
     expose:
       - 6379
   api:
-    build: .
-    # image: bunnana/cleverse-backend-project-api:ci.docker-build-5912ecb
+    # build: .
+    image: bunnana/puadlhang-api:0.1.0-beta
     environment:
       - PORT=8080
       - REDIS_URL=redis://cache:6379
@@ -16,9 +16,22 @@ services:
       - cache
     secrets:
       - service-account
+  deployment:
+    image: cloudiana/compose-deployment:0.0.5
+    ports:
+      - 3000:3000
+    environment:
+      - CD_HOST_COMPOSE_WORKING_DIR=/home/admin/puadlhang-dev
+    volumes:
+      - ./compose.yml:/bin/compose.yml
+      - /var/run/docker.sock:/var/run/docker.sock
+    secrets:
+      - pubkey
 # volumes:
 #   cleverse-backend-db-volume:
 
 secrets:
   service-account:
     file: service-account.json
+  pubkey:
+    file: cd_public.pem
