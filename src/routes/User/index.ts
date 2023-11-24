@@ -9,8 +9,8 @@ const userRouter = Router()
 userRouter.use(authMiddleware.protected)
 
 // Path
-userRouter.get('/me', userController.getMyData)
-userRouter.patch('/', userController.updateMyData)
+userRouter.get('/data', userController.getMyData)
+userRouter.patch('/data', userController.updateMyData)
 userRouter.post('/role/specialist', userController.applyRoleSpecialist)
 
 export default userRouter

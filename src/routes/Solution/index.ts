@@ -11,7 +11,7 @@ solutionRouter.delete('*', authMiddleware.adminProtected)
 // Path
 solutionRouter.get('/', solutionController.getAll)
 solutionRouter.get('/solution/:solutionId', solutionController.getOne)
-solutionRouter.post('/solution/:solutionId/comments', solutionController.comment)
+solutionRouter.post('/solution/:solutionId/comments', authMiddleware.protected, solutionController.comment)
 
 // admin protected
 solutionRouter.post('/', authMiddleware.adminProtected, solutionController.create)
