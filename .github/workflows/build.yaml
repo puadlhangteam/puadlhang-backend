@@ -31,11 +31,11 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: ${{ vars.DOCKERHUB_USERNAME }}/puadlhang-api:${{ steps.params.outputs.REF_TAG }}-${{steps.params.outputs.SHORTENED_SHA}}
+          tags: ${{ vars.DOCKERHUB_USERNAME }}/${{ vars.IMAGE_NAME }}:${{ steps.params.outputs.REF_TAG }}-${{steps.params.outputs.SHORTENED_SHA}}
 
   deploy-built-image:
     needs: [build-docker-image]
-    uses: CleverseAcademy/cd-compose-deployment/.github/workflows/deploy.yaml@ci/actions
+    uses: CleverseAcademy/cd-compose-deployment/.github/workflows/deploy.yaml@main
     with:
       image: ${{ needs.build-docker-image.outputs.image }}
       service_name: ${{ vars.CD_SERVICE }}
