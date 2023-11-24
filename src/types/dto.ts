@@ -51,6 +51,16 @@ export type IReqComment = {
 }
 
 // solution data
+export type IResSolutionsDTO = ICreateSolutionDTO & {
+  solutionId: string
+  comments: {
+    OwnerUid: string
+    text: string
+    rating: number
+    createdAt: Date
+  }[]
+}
+
 export type IResSolutionDTO = ICreateSolutionDTO & {
   solutionId: string
   comments: {

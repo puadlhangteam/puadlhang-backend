@@ -21,15 +21,25 @@ class SolutionService implements ISolutionService {
 
   getAll: ISolutionService['getAll'] = async () => {
     const solutions = await this.solutionRepository.getAll()
-    const result = await Promise.all(solutions.map(this.joinSolution))
 
-    return result
+    return solutions
   }
 
   getOne: ISolutionService['getOne'] = async (solutionId) => {
     const solution = await this.solutionRepository.getOne(solutionId)
     if (!solution) throw new NotFound404Error('solution not found')
     return await this.joinSolution(solution)
+  }
+
+  comment: ISolutionService['comment'] = async (solutionId, credential, commentData) => {
+    const { uid } = credential
+    const { rating, text } = commentData
+
+    if ((!rating && rating !== 0) || isNaN(rating)) throw new BadRequest400Error('Invalid rating')
+
+    if (!text && text !== '') throw new BadRequest400Error('Invalid comment text')
+
+    await this.solutionRepository.comment(solutionId, { OwnerUid: uid, rating, text, createdAt: new Date() })
   }
 
   create: ISolutionService['create'] = async (solutionData) => {
