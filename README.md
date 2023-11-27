@@ -30,6 +30,7 @@
 | :----: | :-----------------------------: | :-----------------------------: | :----------: | :------------------------------------------: | :--------------------------------------------: |
 |  GET   |           /solutions            |        get all solutions        |    anyone    |                     null                     | [IResSolutionsDTO\[\]](./src/types/dto.ts#L56) |
 |  GET   | /solutions/solution/:solutionId |       get solution by id        |    anyone    |                     null                     |   [IResSolutionDTO](./src/types/dto.ts#L60)    |
+|  GET   |       /solutions/:muscle        |   get solution by muscle type   |    anyone    |                     null                     |   [IResSolutionDTO](./src/types/dto.ts#L60)    |
 |  POST  | /solutions/solution/:solutionId | post review comment in solution |  authorized  |    [IReqComment](./src/types/dto.ts#L50)     |     [IMessageDTO](./src/types/dto.ts#L33)      |
 |  POST  |           /solutions/           |       create new solution       |    admin     | [ICreateSolutionDTO](./src/types/dto.ts#L36) |     [IMessageDTO](./src/types/dto.ts#L33)      |
 | PATCH  | /solutions/solution/:solutionId |      update solution by id      |    admin     | [IUpdateSolutionDTO](./src/types/dto.ts#L47) |     [IMessageDTO](./src/types/dto.ts#L33)      |
