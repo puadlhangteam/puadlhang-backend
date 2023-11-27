@@ -10,6 +10,10 @@ class SolutionRepository implements ISolutionRepository {
     return solutions.docs.map((v) => v.data() as ISolutionModel)
   }
 
+  getByMuscle: ISolutionRepository['getByMuscle'] = async (muscle) => {
+    const solutions = await this.Solution.where('muscle', '==', muscle).get()
+    return solutions.docs.map((v) => v.data() as ISolutionModel)
+  }
   getOne: ISolutionRepository['getOne'] = async (solutionId) => {
     const solution = await this.Solution.doc(solutionId).get()
     return solution.data() as ISolutionModel | undefined
