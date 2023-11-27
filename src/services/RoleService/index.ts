@@ -27,7 +27,7 @@ class RoleSpecialistService implements IRoleSpecialistService {
     const { uid } = credential
     const { certificate, description } = formData
     if (!isString(certificate)) throw new BadRequest400Error('Invalid certificate')
-    if (description && isString(description)) throw new BadRequest400Error('Invalid description')
+    if (description && !isString(description)) throw new BadRequest400Error('Invalid description')
     const existForm = await this.roleSpecialistRepository.getOneByUid(uid)
     if (!existForm) {
       this.roleSpecialistRepository.apply({ uid, certificate, description })
