@@ -33,7 +33,7 @@ class SolutionService implements ISolutionService {
     return await this.joinSolution(solution)
   }
   getByMuscle: ISolutionService['getByMuscle'] = async (muscle) => {
-    if (!isValidValue(muscle, AllowMuscle)) throw new BadRequest400Error()
+    if (!isString(muscle) || !isValidValue(muscle, AllowMuscle)) throw new BadRequest400Error('Invalid muscle')
     const solutions = await this.solutionRepository.getByMuscle(muscle as IAllowMuscle)
 
     return solutions.map(({ comments, ...rest }) => rest)

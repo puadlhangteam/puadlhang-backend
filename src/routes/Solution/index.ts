@@ -10,6 +10,7 @@ solutionRouter.delete('*', authMiddleware.adminProtected)
 
 // Path
 solutionRouter.get('/', solutionController.getAll)
+solutionRouter.get('/:muscle', solutionController.getByMuscle)
 solutionRouter.get('/solution/:solutionId', solutionController.getOne)
 solutionRouter.post('/solution/:solutionId/comments', authMiddleware.protected, solutionController.comment)
 
