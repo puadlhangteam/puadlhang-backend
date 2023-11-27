@@ -1,4 +1,4 @@
-import { AllowLevel } from '../../config'
+import { AllowLevel, AllowMuscle, IAllowMuscle } from '../../config'
 import solutionRepository, { ISolutionRepository } from '../../repositories/SolutionRepository'
 import userRepository, { IUserRepository } from '../../repositories/UserRepository'
 import { IComment, ISolutionModel } from '../../types/solution'
@@ -32,7 +32,12 @@ class SolutionService implements ISolutionService {
     if (!solution) throw new NotFound404Error('solution not found')
     return await this.joinSolution(solution)
   }
+  getByMuscle: ISolutionService['getByMuscle'] = async (muscle) => {
+    if (!isValidValue(muscle, AllowMuscle)) throw new BadRequest400Error()
+    const solutions = await this.solutionRepository.getByMuscle(muscle as IAllowMuscle)
 
+    return solutions.map(({ comments, ...rest }) => rest)
+  }
   comment: ISolutionService['comment'] = async (solutionId, credential, commentData) => {
     const { uid } = credential
     const { rating, text } = commentData
