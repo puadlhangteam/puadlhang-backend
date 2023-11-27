@@ -42,9 +42,9 @@ class SolutionService implements ISolutionService {
     const { uid } = credential
     const { rating, text } = commentData
 
-    if (isNumber(rating)) throw new BadRequest400Error('Invalid rating')
+    if (!isNumber(rating)) throw new BadRequest400Error('Invalid rating')
 
-    if (isString(text)) throw new BadRequest400Error('Invalid comment text')
+    if (!isString(text)) throw new BadRequest400Error('Invalid comment text')
 
     await this.solutionRepository.comment(solutionId, { OwnerUid: uid, rating, text, createdAt: new Date().valueOf() })
   }
