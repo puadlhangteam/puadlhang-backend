@@ -10,9 +10,12 @@ import {
 } from '../../types/dto'
 import { ISolutionIdParam } from '../../types/solution'
 
+export type IMuscleParam = { muscle: string }
+
 export type ISolutionController = {
   getAll: RequestHandler<INoParam, IResSolutionsDTO[]>
   getOne: RequestHandler<ISolutionIdParam, IResSolutionDTO>
+  getByMuscle: RequestHandler<IMuscleParam, IResSolutionsDTO[]>
   comment: RequestHandler<ISolutionIdParam, IMessageDTO, IReqComment, unknown, IResLocals>
   create: RequestHandler<INoParam, unknown, ICreateSolutionDTO, unknown, IResLocals>
   update: RequestHandler<ISolutionIdParam, unknown, IUpdateSolutionDTO, unknown, IResLocals>
