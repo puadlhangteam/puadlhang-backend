@@ -11,7 +11,7 @@ class ErrorHandlerMiddleware {
         .json({ message: err.message || err.name })
         .end()
     } else {
-      console.log(`${500}\t${err.message}`)
+      console.log(`${500}\t${err.message}\t${new Date().toISOString()}`)
       res.status(500).json({ message: err.message }).end()
     }
 
