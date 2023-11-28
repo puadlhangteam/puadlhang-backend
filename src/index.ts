@@ -2,7 +2,7 @@ import cors from 'cors'
 import 'dotenv/config'
 import express from 'express'
 import 'express-async-errors'
-import { PORT, corsOption } from './config'
+import { PORT, corsOptions } from './config'
 import authMiddleware from './middlewares/Auth'
 import errorHandlerMiddleware from './middlewares/ErrorHandler'
 import redirectMiddleware from './middlewares/Redirect'
@@ -14,7 +14,7 @@ const app = express()
 
 // Middleware
 app.use(express.json())
-app.use(cors(corsOption))
+app.use(cors(corsOptions))
 app.use(authMiddleware.decode)
 
 // Routes

@@ -4,9 +4,13 @@ services:
     image: redis:7.2.3
     expose:
       - 6379
+  webpage:
+    image: ${DOCKERHUB_USERNAME}/${PROJECT_NAME}-web:0.0.1
+    ports:
+      - 80:80
   api:
     # build: .
-    image: bunnana/puadlhang-api:0.1.0-beta
+    image: ${DOCKERHUB_USERNAME}/${PROJECT_NAME}-api:0.1.0-delta
     environment:
       - PORT=8080
       - REDIS_URL=redis://cache:6379
@@ -16,13 +20,16 @@ services:
       - cache
     secrets:
       - service-account
-  deployment:
+  deployer:
     image: cloudiana/compose-deployment:0.0.5
     ports:
       - 3000:3000
     environment:
       - CD_HOST_COMPOSE_WORKING_DIR=/home/admin/puadlhang-dev
+    env_file:
+      - .env.prod
     volumes:
+      - .env.prod:${PRODUCTION_DIR}/.env.prod
       - ./compose.yml:/bin/compose.yml
       - /var/run/docker.sock:/var/run/docker.sock
     secrets:

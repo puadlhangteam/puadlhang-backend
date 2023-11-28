@@ -1,5 +1,5 @@
 node_modules
-.env
+.env*
 dist*
 temp.ts
 service-account.json
