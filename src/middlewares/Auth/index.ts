@@ -39,7 +39,7 @@ class AuthMiddleware implements IAuthMiddleware {
     const credential = res.locals.credential
     if (!credential || !credential.uid) throw new UnAuthorized401Error()
     const user = await this.userRepository.getUser(credential.uid)
-    if (!user || !user.isAdmin) throw new Forbidden403Error()
+    if (!user || !user?.isAdmin) throw new Forbidden403Error()
     next()
   }
 }
