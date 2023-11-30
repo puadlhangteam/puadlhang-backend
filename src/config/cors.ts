@@ -7,6 +7,7 @@ const allowOrigins = [
   'http://localhost:5174',
   'http://localhost:5175',
   'http://52.63.27.28',
+  'https://puadlhang.cleverse.academy',
 ]
 export const corsOptions: CorsOptions = {
   origin: (origin, callback) => {
