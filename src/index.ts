@@ -5,6 +5,7 @@ import 'express-async-errors'
 import { PORT, corsOptions } from './config'
 import authMiddleware from './middlewares/Auth'
 import errorHandlerMiddleware from './middlewares/ErrorHandler'
+import loggerMiddleware from './middlewares/Logger'
 import redirectMiddleware from './middlewares/Redirect'
 import adminRouter from './routes/Admin'
 import solutionRouter from './routes/Solution'
@@ -16,6 +17,7 @@ const app = express()
 app.use(express.json())
 app.use(cors(corsOptions))
 app.use(authMiddleware.decode)
+app.use(loggerMiddleware.requestLog)
 
 // Routes
 app.use('/user', userRouter)
