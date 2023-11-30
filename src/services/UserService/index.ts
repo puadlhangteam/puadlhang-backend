@@ -16,9 +16,11 @@ class UserSrevice implements IUserService {
       await this.userRepository.createUser(uid, defaultUser(credential))
       user = await this.userRepository.getUser(uid)
     }
+    if (user?.isAdmin) {
+      delete user.isAdmin
+    }
 
-    const { isAdmin, ...rest } = user!
-    return rest
+    return user!
   }
 
   updateUserData: IUserService['updateUserData'] = async (credential, updateUserData) => {
