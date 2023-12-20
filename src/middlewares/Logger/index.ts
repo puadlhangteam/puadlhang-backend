@@ -4,9 +4,9 @@ import { IResLocals } from '../../types'
 class LoggerMiddleware {
   requestLog: RequestHandler<unknown, unknown, unknown, unknown, IResLocals> = (req, res, next) => {
     console.log(
-      `${req.method}\t${req?.headers?.origin}\t${req?.socket?.remoteAddress}\t${req.path}\t${
-        res?.locals?.credential?.uid || null
-      }\t${new Date().toISOString()}`,
+      `${req.method}\t${req.path}\t${req?.headers?.origin}\t${
+        req?.socket?.remoteAddress
+      }\t${new Date().toISOString()}\t${res?.locals?.credential?.uid || null}`,
     )
     next()
   }
